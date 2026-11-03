@@ -1,0 +1,22 @@
+services:
+  socialcanvas:
+    build: .
+    ports:
+      - "127.0.0.1:3001:3001"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      APP_URL: ${APP_URL:?Set your public HTTPS URL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set a strong admin password}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?Set a 32-byte hex encryption key}
+      DEMO_MODE: ${DEMO_MODE:-false}
+      META_APP_ID: ${META_APP_ID:-}
+      META_APP_SECRET: ${META_APP_SECRET:-}
+      META_API_VERSION: ${META_API_VERSION:-v25.0}
+      SOURCE_URL: ${SOURCE_URL:-https://github.com/RaDeleon/SocialCanvas}
+      TRUST_PROXY: ${TRUST_PROXY:-0}
+    volumes:
+      - socialcanvas-data:/app/data
+    restart: unless-stopped
+volumes:
+  socialcanvas-data:

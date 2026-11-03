@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+<title id="title">SocialCanvas</title><desc id="desc">Your Instagram. Your website. Your canvas. Open-source Instagram feeds for the websites you build.</desc>
+<rect width="1200" height="320" rx="18" fill="#142b23"/>
+<circle cx="1140" cy="-40" r="290" fill="#1d3c30"/>
+<rect x="56" y="48" width="43" height="43" rx="11" fill="#a6d7b7"/>
+<path d="m66 62 12-6 12 6-12 6Zm0 8 12 6 12-6m-24 8 12 6 12-6" fill="none" stroke="#193c2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="113" y="79" fill="#eaf3ed" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700">SocialCanvas</text>
+<text x="56" y="157" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="43" font-weight="700" letter-spacing="-1.3">Your Instagram.</text>
+<text x="56" y="211" fill="#b6dbbf" font-family="Arial,Helvetica,sans-serif" font-size="43" font-weight="700" letter-spacing="-1.3">Your website. Your canvas.</text>
+<text x="58" y="264" fill="#a7bcb0" font-family="Arial,Helvetica,sans-serif" font-size="17">Open-source feeds for the websites you build.</text>
+<g transform="translate(840 44) rotate(6 135 115)"><rect width="275" height="237" rx="13" fill="#f4f8f5"/><circle cx="27" cy="26" r="10" fill="#bed4c4"/><rect x="44" y="20" width="100" height="6" rx="3" fill="#536e5e"/><rect x="44" y="31" width="71" height="4" rx="2" fill="#b9c9bf"/>
+<rect x="15" y="53" width="77" height="77" rx="4" fill="#5d8d80"/><path d="M15 110q20-22 38-8t39-7v35H15" fill="#9bc2ae"/><rect x="99" y="53" width="77" height="77" rx="4" fill="#cfbf9b"/><rect x="183" y="53" width="77" height="77" rx="4" fill="#a9b7a0"/>
+<rect x="15" y="137" width="77" height="77" rx="4" fill="#bac9b8"/><rect x="99" y="137" width="77" height="77" rx="4" fill="#77957a"/><rect x="183" y="137" width="77" height="77" rx="4" fill="#dbcfb0"/>
+</g></svg>
