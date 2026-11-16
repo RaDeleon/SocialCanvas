@@ -1,14 +1,16 @@
 <div align="center">
 
-<img src="docs/assets/socialcanvas-banner.svg" alt="SocialCanvas — Your Instagram. Your website. Your canvas." width="100%" />
+<img src="docs/assets/socialcanvas-banner.png" alt="SocialCanvas — Your Instagram. Your website. Your canvas." width="100%" />
 
-# Instagram belongs on your website.
+# SocialCanvas
+
+### Instagram belongs on your website.
 
 **Beautiful feeds. Private client connections. One small embed.**
 
 SocialCanvas is an open-source Instagram widget builder for freelancers, agencies, and the clients they build for. Send a connection link, design the feed, and make it part of the website.
 
-[![CI](https://github.com/RaDeleon/SocialCanvas/actions/workflows/ci.yml/badge.svg?branch=codex%2Fmanaged-beta)](https://github.com/RaDeleon/SocialCanvas/actions/workflows/ci.yml)
+[![CI](https://github.com/RaDeleon/SocialCanvas/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/RaDeleon/SocialCanvas/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/RaDeleon/SocialCanvas?style=flat-square&color=235d48)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/RaDeleon/SocialCanvas?style=flat-square&color=e1ae47)](https://github.com/RaDeleon/SocialCanvas/stargazers)
 [![Forks](https://img.shields.io/github/forks/RaDeleon/SocialCanvas?style=flat-square&color=235d48)](https://github.com/RaDeleon/SocialCanvas/forks)
@@ -17,9 +19,11 @@ SocialCanvas is an open-source Instagram widget builder for freelancers, agencie
 [![Node](https://img.shields.io/badge/Node.js-22.13%2B-417e38?style=flat-square&logo=nodedotjs&logoColor=white)](package.json)
 [![Layouts](https://img.shields.io/badge/layouts-6-235d48?style=flat-square)](#six-layouts-one-canvas)
 [![Status](https://img.shields.io/badge/status-managed_beta-f1c463?style=flat-square&labelColor=333b35)](#where-the-beta-stands)
-[![Last commit](https://img.shields.io/github/last-commit/RaDeleon/SocialCanvas/codex/managed-beta?style=flat-square&color=235d48)](https://github.com/RaDeleon/SocialCanvas/commits/codex/managed-beta)
+[![Last commit](https://img.shields.io/github/last-commit/RaDeleon/SocialCanvas/main?style=flat-square&color=235d48)](https://github.com/RaDeleon/SocialCanvas/commits/main)
 
-[Get started](#running-in-two-commands) · [See the app](#meet-your-new-workspace) · [Instagram setup](docs/instagram-setup.md) · [Self-host](docs/self-hosting.md#production) · [Contribute](CONTRIBUTING.md)
+[![Get source](https://img.shields.io/badge/Get_the_source-main_ZIP-e1ae47?style=for-the-badge&logo=github&logoColor=163c30)](https://github.com/RaDeleon/SocialCanvas/archive/refs/heads/main.zip)
+
+[Get started](#quick-start) · [Why I built it](#why-i-built-it) · [Validation](#validation-and-current-limits) · [See the app](#meet-your-new-workspace) · [Instagram setup](docs/instagram-setup.md) · [Self-host](docs/self-hosting.md#production) · [Contribute](CONTRIBUTING.md)
 
 <img src="https://skillicons.dev/icons?i=react,typescript,vite,nodejs,express,sqlite,docker,githubactions&theme=light" alt="React, TypeScript, Vite, Node.js, Express, SQLite, Docker, and GitHub Actions" />
 
@@ -27,6 +31,14 @@ SocialCanvas is an open-source Instagram widget builder for freelancers, agencie
 
 > [!IMPORTANT]
 > **Managed beta.** The local demo works without Instagram credentials. Real connections require a configured Meta app, an eligible Business or Creator account, and the access approval appropriate to your use. Hosted billing and public self-service signup are planned, not shipped.
+
+## Why I built it
+
+I wanted more control over the Instagram feeds I put on client websites: the account connection, the layout, the code behind the embed, and how the service is operated. A feed should feel like part of the site, with a workflow that makes sense for the person managing it.
+
+SocialCanvas brings those pieces together in one open-source application. The client gets a private connection link; the website manager designs and publishes the widget. The same foundation can be self-hosted or used to operate a managed service, with hosted billing and public signup still ahead.
+
+The banner is original product artwork with a creative red panda and conceptual feed layouts. The application screenshot below shows the actual builder with sample photography; the illustration is not a claim about a new runtime feature.
 
 ## Meet your new workspace
 
@@ -82,15 +94,13 @@ Fine-tune columns, mobile columns, spacing, rounded corners, accent colors, ligh
 
 Paste it into an HTML block on your website. WordPress, Webflow, Squarespace, Shopify, and other builders can use the snippet where their plan, security settings, and theme allow scripts and iframes. Native platform plugins are not included.
 
-## Running in two commands
+## Quick start
 
 Requires **Node.js 22.13+** and npm.
 
 ```sh
 git clone https://github.com/RaDeleon/SocialCanvas.git
 cd SocialCanvas
-# Until the beta PR is merged, check out its implementation branch:
-git switch codex/managed-beta
 npm ci
 npm run dev
 ```
@@ -159,6 +169,21 @@ flowchart LR
 | **Distribution**            | JavaScript loader + iframe, Docker, Compose                  |
 | **Verification**            | Node test runner, TypeScript build, Prettier, GitHub Actions |
 
+### Source map
+
+| Path                                           | Responsibility                                                                   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------- |
+| `src/components/Editor.tsx`                    | Layout, content, appearance and publish controls.                                |
+| `src/components/Feed.tsx`                      | Shared preview/embed renderer, media tiles, slider and lightbox.                 |
+| `src/components/Clients.tsx` and `Connect.tsx` | Managed client invitations and connection screens.                               |
+| `src/App.tsx` and `src/api.ts`                 | Workspace routes, authentication screens and API requests.                       |
+| `server/app.mjs`                               | Admin/public endpoints, invitations, OAuth lifecycle, sync and published embeds. |
+| `server/instagram.mjs`                         | Instagram token exchange, profile/media retrieval and renewal adapter.           |
+| `server/store.mjs`                             | SQLite schema and credential encryption.                                         |
+| `server/index.mjs`                             | Server startup and periodic refresh scheduling.                                  |
+| `server/*.test.mjs`                            | Backend integration and mocked Instagram adapter tests.                          |
+| `docs/`                                        | Instagram setup, self-hosting and contribution-facing documentation.             |
+
 <details>
 <summary><strong>Security and connection lifecycle</strong></summary>
 
@@ -208,11 +233,38 @@ npm start             # Production server; requires environment configuration
 [![Contributors](https://img.shields.io/github/contributors/RaDeleon/SocialCanvas?style=for-the-badge&color=235d48)](https://github.com/RaDeleon/SocialCanvas/graphs/contributors)
 [![Open PRs](https://img.shields.io/github/issues-pr/RaDeleon/SocialCanvas?style=for-the-badge&color=235d48)](https://github.com/RaDeleon/SocialCanvas/pulls)
 
-[![Star history](https://api.star-history.com/svg?repos=RaDeleon/SocialCanvas&type=Date)](https://www.star-history.com/#RaDeleon/SocialCanvas&Date)
+[![SocialCanvas repository card](https://opengraph.githubassets.com/socialcanvas-showcase/RaDeleon/SocialCanvas)](https://github.com/RaDeleon/SocialCanvas)
 
 </div>
 
-GitHub badges track repository activity. The CI and last-commit badges above track the beta implementation branch. The star-history chart fills in as the project gains stars; external badge/chart providers can occasionally be unavailable.
+GitHub badges track repository activity. The source ZIP button downloads GitHub’s automatic `main` archive; those downloads are not reported as release-asset download counts. The CI and last-commit badges above track `main`. The repository card is provided by GitHub. External badge providers can occasionally be unavailable.
+
+## Validation and current limits
+
+| Check                    | What it establishes                                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------------------------------- |
+| `npm run build`          | TypeScript checks and production frontend compilation.                                                    |
+| `npm test`               | Backend and Instagram adapter behavior against fixtures/fake providers.                                   |
+| `npm run format:check`   | Formatting across source, docs and workflow files.                                                        |
+| GitHub Actions on `main` | Repeatable build, backend tests and formatting checks; inspect the live badge/run for the current result. |
+| Demo workspace           | A way to explore the editor and published embed with sample content, without Instagram credentials.       |
+
+Passing these checks does not establish live Meta approval, live account compatibility, or production load capacity. Validate OAuth, media retrieval, reconnect, token renewal and deletion with an eligible account and the configured Meta app before onboarding real clients. This documentation/artwork refresh does not change the connector, security model or application version.
+
+<details>
+<summary><strong>Common setup questions</strong></summary>
+
+**The local page cannot sign in or save.** Use `http://localhost:5173` exactly with the default configuration. `APP_URL` is an origin, so switching between `localhost` and `127.0.0.1` can fail request checks. If you create `.env`, fill its required values; empty fields override local development defaults.
+
+**The live connection fails.** First distinguish the demo from a real Instagram connection. Check the Meta app setup, the eligible account, redirect URLs and access approval in the [setup guide](docs/instagram-setup.md). Do not paste tokens or account secrets into bug reports.
+
+**A feed is not appearing on a client site.** Confirm the widget is published, the exact website hostname is allowed, and the site builder permits the loader script and iframe. `www` and the bare hostname are separate entries. Draft edits do not change a published feed until republished.
+
+**Can clients log into the dashboard or buy a subscription?** This beta is operator-managed. Clients use invitation links; public signup, billing and plan metering are not implemented.
+
+**Is there an installer or hosted service to download?** Distribution is source plus Docker packaging. Use the source ZIP or clone, then follow the setup guide. No desktop installer or public hosted-service launch is claimed.
+
+</details>
 
 ## Where the beta stands
 
