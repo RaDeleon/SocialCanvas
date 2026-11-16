@@ -6,3 +6,22 @@ data/
 !.env.example
 *.tsbuildinfo
 .DS_Store
+
+# Private local project records
+/devlog.md
+/devlog.html
+/changelog.md
+/sessionlog.md
+/docs/dev-diary/
+/_devlog/
+
+# Private local development records
+/Devlog.html
+/Devlog.md
+/CHANGELOG.md
+/SessionLog.md
+/sessions.log
+/dev-diary/
+/devdiary/
+/[Dd]ev[Dd]iary*
+/docs/dev-diary/README.md
